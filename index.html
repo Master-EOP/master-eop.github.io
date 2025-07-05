@@ -1,164 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Modern Portfolio</title>
+<!-- Google Fonts for a sleek font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: #0f2027; /* dark background */
-      color: #fff;
-      line-height: 1.6;
-    }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f2027; /* dark background */
+    color: #fff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
 
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-    }
+  /* Header / Navigation */
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+  }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
 
-    header p {
-      font-size: 1.2rem;
-    }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s, transform 0.2s;
+  }
 
-    /* Projects grid */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-    }
+  nav a:hover {
+    color: #ffd700;
+    transform: scale(1.05);
+  }
 
-    /* Individual project card */
-    .project {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+  /* Sections styling */
+section {
+  padding: 100px 20px 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    .project:hover {
-      transform: translateY(-10px);
-      box-ustify-content: center;
-      padding: 2rem;
-    }
+/* Hero / Intro */
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding-top: 60px; /* to offset fixed header */
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  animation: fadeIn 1s ease-in-out;
+}
 
-    .project-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      margin: 1rem;
-      width: 300px;
-      overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeInUp 0.8s ease forwards;
-    }
+#home h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: slideInDown 1s forwards;
+}
 
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
-    }
+#home p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* About Me */
+#about {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeInUp 1s ease;
+}
 
-    .project-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+#about h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
 
-    .project-content {
-      padding: 1rem;
-    }
+#about p {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
 
-    .project-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
+/* Projects */
+#projects {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 2rem 0;
+  animation: fadeInUp 1s ease;
+}
 
-    .project-description {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
+.project-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
 
-    .project-buttons {
-      display: flex;
-      justify-content: space-between;
-    }
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
 
-    .btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
 
-    .btn-view {
-      background-color: #fff;
-      color: #333;
-    }
+.project-card:hover img {
+  transform: scale(1.05);
+}
 
-    .btn-view:hover {
-      background-color: #ddd;
-    }
+.project-info {
+  padding: 1rem;
+}
 
-    .btn-source {
-      background-color: transparent;
-      color: #fff;
-      border: 2px solid #fff;
-    }
+.project-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
 
-    .btn-source:hover {
-      background-color: #fff;
-      color: #333;
-    }
+.project-desc {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
 
-    footer {
-      padding: 2rem;
-      text-align: center;
-      background: rgba(0,0,0,0.2);
-    }
-
-    /* Responsive adjustments */
-    @media(max-width: 1000px){
-      .projects {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>My Portfolio</h1>
-    <p>Future projects, creative ideas, and more!</p>
-  </header>
-
-  <section class="projects">
-    <!-- Example Project Card -->
-    <div class="project-card" style="animation-delay: 0.2s;">
-      <img src="https://images.unsplash.com/photo-1506744038136-462738
+/*
